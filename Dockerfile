@@ -9,7 +9,9 @@ RUN : && \
     shadow \
     tzdata \
     tmux \
+    bash \
     zsh \
+    perl \
     neovim \
     the_silver_searcher \
     python3 \
@@ -26,11 +28,11 @@ RUN : && \
     musl-dev \
   && \
   rm -rf /var/cache/apk/* && \
-  addgroup sudo && \
+  addgroup -S sudo && \
   echo '%sudo	ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers && \
   :
 
-COPY entrypoint.sh /
+COPY entrypoint.sh /usr/local/bin
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["/bin/zsh"]
