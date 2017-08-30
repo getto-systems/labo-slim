@@ -11,4 +11,4 @@ if [ -n "$LABO_TIMEZONE" ]; then
   fi
 fi
 
-exec sudo -H -u $LABO_USER "$@"
+exec sudo -E -H -u $LABO_USER "$@"
