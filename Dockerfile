@@ -5,6 +5,7 @@ RUN : && \
   apk add --update \
     curl \
     git \
+    less \
     sudo \
     shadow \
     tzdata \
