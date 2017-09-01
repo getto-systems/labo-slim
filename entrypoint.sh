@@ -2,8 +2,8 @@
 
 : ${LABO_USER:=labo}
 
-adduser -D $LABO_USER && \
-  usermod -g $LABO_USER -G $LABO_USER,sudo -s /bin/zsh $LABO_USER
+useradd $LABO_USER -s /bin/zsh && \
+  usermod -aG sudo $LABO_USER
 
 if [ -n "$LABO_TIMEZONE" ]; then
   if [ -f "/usr/share/zoneinfo/$LABO_TIMEZONE" ]; then
