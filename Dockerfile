@@ -6,6 +6,7 @@ RUN : && \
     curl \
     git \
     less \
+    grep \
     sudo \
     shadow \
     tzdata \
