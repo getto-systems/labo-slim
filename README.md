@@ -7,7 +7,7 @@ labo image without ssh
 ```bash
 #!/bin/bash
 
-work_in_main(){
+connect_main(){
   local user
   local root
   local home
@@ -17,7 +17,7 @@ work_in_main(){
   root=${YOUR_WORKING_ROOT_DIR}
   home=/home/$user
   timezone=Asia/Tokyo
-  image=getto/labo-slim:0.0.5
+  image=getto/labo-slim
 
   docker run -it --rm \
     --detach-keys ctrl-@,ctrl-@ \
@@ -31,5 +31,5 @@ work_in_main(){
     $image
 }
 
-work_in_main
+connect_main
 ```
