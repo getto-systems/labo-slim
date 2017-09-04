@@ -1,53 +1,42 @@
-FROM ubuntu:17.04
+FROM alpine:edge
 MAINTAINER shun
 
-ENV LSB_RELEASE zesty
+ENV DOCKER_VERSION 17.06.1-ce
 
-# basic packages
-RUN : \
- && set -x \
- && apt-get update \
- && apt-get install -y \
-      bash-completion \
+RUN apk add --update \
       curl \
       git \
-      language-pack-ja \
-      language-pack-ja-base \
-      man \
-      manpages-dev \
-      silversearcher-ag \
-      software-properties-common \
+      less \
+      grep \
       sudo \
+      shadow \
+      tzdata \
       tmux \
+      bash \
       zsh \
- && apt-get clean \
- && :
-
-# docker
-RUN : \
- && set -x \
- && apt-get install -y \
-      apt-transport-https \
-      ca-certificates \
- && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
- && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $LSB_RELEASE stable" \
- && apt-get update \
- && apt-get install -y \
-      docker-ce \
- && apt-get clean \
- && :
-
-# install nvim
-RUN : \
- && set -x \
- && add-apt-repository ppa:neovim-ppa/unstable \
- && apt-get update \
- && apt-get install -y \
+      perl \
       neovim \
-      python3-pip \
- && apt-get clean \
- && pip3 install neovim \
- && :
+      the_silver_searcher \
+      python3 \
+      py3-pip \
+      gcc \
+      python3-dev \
+      musl-dev \
+    && \
+    pip3 install neovim && \
+    apk del \
+      py3-pip \
+      gcc \
+      python3-dev \
+      musl-dev \
+    && \
+    addgroup -S sudo && \
+    echo '%sudo  ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers && \
+    curl https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz --output /tmp/docker.tgz && \
+    tar -xzf /tmp/docker.tgz -C /tmp && \
+    mv /tmp/docker/docker /usr/local/bin && \
+    rm -rf /tmp/docker* && \
+    :
 
 COPY entrypoint.sh /usr/local/bin
 
