@@ -5,6 +5,7 @@ ENV DOCKER_VERSION 17.06.1-ce
 
 RUN apk add --update \
       curl \
+      openssh-client \
       git \
       less \
       grep \
