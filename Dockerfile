@@ -1,7 +1,7 @@
-FROM alpine:edge
+FROM alpine:3.7
 MAINTAINER shun
 
-ENV DOCKER_VERSION 17.06.1-ce
+ENV DOCKER_VERSION 17.12.0-ce
 
 RUN apk add --update \
       curl \
