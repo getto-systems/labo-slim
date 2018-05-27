@@ -1,4 +1,4 @@
-FROM resin/raspberry-pi-alpine:edge
+FROM resin/raspberry-pi-alpine:3.6
 MAINTAINER shun
 
 ENV DOCKER_VERSION 17.12.0-ce
