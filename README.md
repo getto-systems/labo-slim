@@ -1,3 +1,7 @@
+# this project has been moved
+
+moved to [getto-systems/dockerfiles-base](https://github.com/getto-systems/dockerfiles-base)
+
 # labo-slim
 
 labo image without ssh
